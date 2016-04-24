@@ -17,3 +17,8 @@
 
 # Ignore Spring files.
 /spring/*.pid
+
+.idea/
+
+.ruby-gemset
+.ruby-version
