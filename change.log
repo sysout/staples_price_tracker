@@ -6,8 +6,8 @@ Learn `rails generate model` from: http://railsguides.net/advanced-rails-model-g
 
 - Database   (data source: Staples.com)
   a. user (based on tutorial example)
-  b. product (id, staples_pid, msrp, price)
-    rails generate model product staples_pid:string:index:uniq{6} 'msrp:decimal{10,2}' 'price:decimal{10,2}'
+  b. product (id, staples_pid, name, msrp, price)
+    rails generate model product staples_pid:string{6}:index:uniq name:string{256} 'msrp:decimal{10,2}' 'price:decimal{10,2}'
   c. alert (id, product_id, user_id, expectation)
     rails generate model alert user:references product:references 'expectation:decimal{10,2}'
   d. price history (product_id, update_time, price)
