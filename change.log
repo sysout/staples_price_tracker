@@ -1,1 +1,38 @@
-# 
+Customized Deal App
+
+Back end 
+
+Learn `rails generate model` from: http://railsguides.net/advanced-rails-model-generators/
+
+- Database   (data source: Staples.com)
+  a. user (based on tutorial example)
+  b. product (id, staples_pid, msrp, price)
+    rails generate model product staples_pid:string:index:uniq{6} 'msrp:decimal{10,2}' 'price:decimal{10,2}'
+  c. alert (id, product_id, user_id, expectation)
+    rails generate model alert user:references product:references 'expectation:decimal{10,2}'
+  d. price history (product_id, update_time, price)
+    rails generate model history user:references product:references 'msrp:decimal{10,2}'
+
+
+
+- Automatically Catch Change
+
+Front end
+
+Page 1: Login -- tutorial  (banner, user_id, password, register, forget id/pwd, login)
+
+Page 2: 
+
+Create New Item: search box + Add
+Index Existing Items (Product/MSRP/Current Price)
+Update target price
+Delete existing item
+
+
+Web worker
+Update price 
+
+
+Alert Email
+
+"The price of <XXX> in track has dropped to/blow your target price."
