@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :price_histories
   resources :alerts
   root                'static_pages#home'
   get    'help'    => 'static_pages#help'

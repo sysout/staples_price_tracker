@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @price_history.product %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @price_history.price %>
+</p>
+
+<%= link_to 'Edit', edit_price_history_path(@price_history) %> |
+<%= link_to 'Back', price_histories_path %>

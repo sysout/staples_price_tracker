@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424191417) do
+ActiveRecord::Schema.define(version: 20160424193742) do
 
   create_table "alerts", force: :cascade do |t|
     t.integer  "user_id",                             null: false
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20160424191417) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+
+  create_table "price_histories", force: :cascade do |t|
+    t.integer  "product_id",                          null: false
+    t.decimal  "price",      precision: 10, scale: 2, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "price_histories", ["created_at"], name: "index_price_histories_on_created_at"
+  add_index "price_histories", ["product_id"], name: "index_price_histories_on_product_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "staples_pid", limit: 6,                            null: false

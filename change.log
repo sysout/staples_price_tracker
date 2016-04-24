@@ -11,7 +11,7 @@ Learn `rails generate model` from: http://railsguides.net/advanced-rails-model-g
   c. alert (id, product_id, user_id, desired)
     rails generate scaffold Alert user:references product:references 'desired:decimal{10,2}'
   d. price price_history (product_id, price)
-    rails generate model history product:references 'price:decimal{10,2}'
+    rails generate scaffold price_history product:references 'price:decimal{10,2}'
 
 
 
