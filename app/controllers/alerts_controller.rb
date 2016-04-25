@@ -4,9 +4,11 @@ class AlertsController < ApplicationController
 
   # GET /alerts
   # GET /alerts.json
-  # def index
-  #   @alerts = Alert.all
-  # end
+  def index
+    @alert = current_user.alerts.build
+    @alert.build_product
+    @alerts = current_user.alerts.all
+  end
 
   # GET /alerts/1
   # GET /alerts/1.json
@@ -27,13 +29,20 @@ class AlertsController < ApplicationController
   def create
     @alert = Alert.new(alert_params)
     @alert.user=current_user
-
+    @alerts = current_user.alerts.all
+    update_flag = false
+    p=Product.find_by_staples_pid(@alert.product.staples_pid)
+    if p and Alert.where(user: current_user, product: p).first
+      @alert = Alert.where(user: current_user, product: p).first
+      update_flag = true
+    end
     respond_to do |format|
-      if @alert.save
-        format.html { redirect_to @alert, notice: 'Alert was successfully created.' }
+      # if (update_flag and @alert.update(alert_params)) || (!update_flag and @alert.save)
+      if @alert.update(alert_params)
+        format.html { redirect_to alerts_path, notice: "Alert was successfully #{update_flag ? 'updated':'created.'}" }
         format.json { render :show, status: :created, location: @alert }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @alert.errors, status: :unprocessable_entity }
       end
     end
@@ -42,15 +51,7 @@ class AlertsController < ApplicationController
   # PATCH/PUT /alerts/1
   # PATCH/PUT /alerts/1.json
   def update
-    respond_to do |format|
-      if @alert.update(alert_params)
-        format.html { redirect_to @alert, notice: 'Alert was successfully updated.' }
-        format.json { render :show, status: :ok, location: @alert }
-      else
-        format.html { render :edit }
-        format.json { render json: @alert.errors, status: :unprocessable_entity }
-      end
-    end
+    create
   end
 
   # DELETE /alerts/1
@@ -58,7 +59,7 @@ class AlertsController < ApplicationController
   def destroy
     @alert.destroy
     respond_to do |format|
-      format.html { redirect_to alerts_url, notice: 'Alert was successfully destroyed.' }
+      format.html { redirect_to alerts_path, notice: 'Alert was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

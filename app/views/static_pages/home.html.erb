@@ -1,25 +1,12 @@
-<% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="alert_form">
-        <%= render 'alerts/form' %>
-      </section>
-      <section class="alerts">
-        <%= render 'alerts/index' %>
-      </section>
-    </aside>
-  </div>
-<% else %>
-  <div class="center jumbotron">
-    <h1>Welcome to the Staples Price Tracker</h1>
-    
-    <h2>
-      This is the home page for the Staples Price Tracker app.
-    </h2>
-    
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>  
-  </div>
-  
-  <%= link_to image_tag("rails.png", alt: "Rails logo"),
-              'http://rubyonrails.org' %>
-<% end %>
+<div class="center jumbotron">
+<h1>Welcome to the Staples Price Tracker</h1>
+
+<h2>
+  This is the home page for the Staples Price Tracker app.
+</h2>
+
+<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails logo"),
+          'http://rubyonrails.org' %>

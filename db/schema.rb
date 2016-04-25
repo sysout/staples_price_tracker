@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424193742) do
+ActiveRecord::Schema.define(version: 20160425022225) do
 
   create_table "alerts", force: :cascade do |t|
     t.integer  "user_id",                             null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160424193742) do
     t.datetime "updated_at",                          null: false
   end
 
+  add_index "alerts", ["product_id", "user_id"], name: "index_alerts_on_product_id_and_user_id", unique: true
   add_index "alerts", ["product_id"], name: "index_alerts_on_product_id"
   add_index "alerts", ["user_id"], name: "index_alerts_on_user_id"
 

@@ -1,5 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Alerts</h1>
-
-<%= render 'index' %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="alert_form">
+      <%= render 'alerts/form' %>
+    </section>
+    <section class="alerts">
+      <%= render 'alerts/index' %>
+    </section>
+  </aside>
+</div>

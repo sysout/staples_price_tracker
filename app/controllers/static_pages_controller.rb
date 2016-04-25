@@ -2,9 +2,7 @@ class StaticPagesController < ApplicationController
   
   def home
     if logged_in?
-      @alert = current_user.alerts.build
-      @alert.build_product
-      @alerts = current_user.alerts.all
+      redirect_to alerts_path
     end
   end
 
