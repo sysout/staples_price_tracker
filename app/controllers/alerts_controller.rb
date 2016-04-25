@@ -1,11 +1,12 @@
 class AlertsController < ApplicationController
   before_action :set_alert, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user
 
   # GET /alerts
   # GET /alerts.json
-  def index
-    @alerts = Alert.all
-  end
+  # def index
+  #   @alerts = Alert.all
+  # end
 
   # GET /alerts/1
   # GET /alerts/1.json
@@ -25,6 +26,7 @@ class AlertsController < ApplicationController
   # POST /alerts.json
   def create
     @alert = Alert.new(alert_params)
+    @alert.user=current_user
 
     respond_to do |format|
       if @alert.save
@@ -69,6 +71,6 @@ class AlertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alert_params
-      params.require(:alert).permit(:user_id, :product_id, :desired)
+      params.require(:alert).permit(:desired, product_attributes: [:staples_pid])
     end
 end

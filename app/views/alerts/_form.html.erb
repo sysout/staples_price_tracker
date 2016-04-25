@@ -10,20 +10,17 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= f.fields_for :product do |builder| %>
+        <%= builder.label :staples_pid, "Product id/url" %><br>
+        <%= builder.text_field :staples_pid %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.text_field :product_id %>
-  </div>
-  <div class="field">
-    <%= f.label :desired %><br>
+    <%= f.label :desired, "Desired price" %><br>
     <%= f.text_field :desired %>
   </div>
-  <div class="actions">
+  <div class="field">
     <%= f.submit %>
   </div>
 <% end %>

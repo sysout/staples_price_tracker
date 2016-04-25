@@ -2,8 +2,9 @@ class StaticPagesController < ApplicationController
   
   def home
     if logged_in?
-      @micropost = current_user.microposts.build
-      @feed_items = current_user.feed.paginate(page: params[:page])
+      @alert = current_user.alerts.build
+      @alert.build_product
+      @alerts = current_user.alerts.all
     end
   end
 
