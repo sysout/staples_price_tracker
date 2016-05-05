@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Product Id</th>
+      <th>Product Image</th>
       <th>Product Name</th>
       <th>Desired Price</th>
       <th colspan="1"></th>
@@ -12,6 +13,7 @@
     <% @alerts.each do |alert| %>
       <tr>
         <td><%= alert.product.staples_pid %></td>
+        <td><%= image_tag(alert.product.image_url, alt: alert.product.name) %></td>
         <td><%= alert.product.name %></td>
         <td><%= alert.desired %></td>
         <td><%= link_to 'Destroy', alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>

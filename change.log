@@ -7,7 +7,10 @@ Learn `rails generate model` from: http://railsguides.net/advanced-rails-model-g
 - Database   (data source: Staples.com)
   a. user (based on tutorial example)
   b. product (id, staples_pid, name, msrp, price)
-    rails generate model product staples_pid:string{6}:index:uniq name:string{256} 'msrp:decimal{10,2}' 'price:decimal{10,2}'
+    rails generate model product staples_pid:string{6,7}:index:uniq name:string{256} 'msrp:decimal{10,2}' 'price:decimal{10,2}'
+    rails generate migration RemoveMsrpFromProducts 'msrp:decimal{10,2}'
+    rails generate migration AddDetailsToProducts url:string{256} image_url:string{256} description:string{256} availability:integer
+    rails generate migration ChangeProductsStatples_pid staples_pid:string{8}
   c. alert (id, product_id, user_id, desired)
     rails generate scaffold Alert user:references product:references 'desired:decimal{10,2}'
   d. price price_history (product_id, price)
