@@ -39,10 +39,10 @@ class Product < ActiveRecord::Base
   def product_exists
     # p_id=1684954  # kindle paperwhite
     if self.name==nil
-      return errors.add(:base, 'Product not found. Please double check!')
+      return errors.add(:base, 'product not found, please double check!')
     end
     if self.name.match("Unavailable")
-      return errors.add(:base, 'Site Unavailable, try later')
+      return errors.add(:base, 'site unavailable, try later')
     end
   end
 
