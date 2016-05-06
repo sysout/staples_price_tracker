@@ -16,7 +16,13 @@ Learn `rails generate model` from: http://railsguides.net/advanced-rails-model-g
   d. price price_history (product_id, price)
     rails generate scaffold price_history product:references 'price:decimal{10,2}'
 
+- heroku
+Ref: https://www.dailydrip.com/topics/sidekiq/drips/deployment
+heroku addons:create redistogo:nano
+heroku config:set REDIS_PROVIDER=REDISTOGO_URL
 
+SENDGRID_USERNAME
+SENDGRID_PASSWORD
 
 - Automatically Catch Change
 

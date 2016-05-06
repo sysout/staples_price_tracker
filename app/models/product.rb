@@ -25,8 +25,8 @@ class Product < ActiveRecord::Base
     self.name=page.search('[itemprop="name"]').text
     self.price=page.search('span[itemprop="price"]').text.sub("$", "").to_f
     self.description=page.search('div[itemprop="description"]').text
-    self.image_url=page.search('img[itemprop="image"]').attr('src').text
-    self.url=page.search('a[itemprop="url"]').attr('href').text
+    self.image_url=page.search('img[itemprop="image"]').attr('src').text.sub(/\Ahttp:/,"")
+    self.url=page.search('a[itemprop="url"]').attr('href').text.sub(/\Ahttp:/,"")
     # ignore item condition, user should know more
     # itemCondition=page.search('link[itemprop="itemCondition"]').attr('href').text
     if "http://schema.org/InStock"==page.search('link[itemprop="availability"]').attr('href').text
