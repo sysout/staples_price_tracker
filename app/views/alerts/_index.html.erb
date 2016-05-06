@@ -14,7 +14,7 @@
     <% @alerts.each do |alert| %>
       <tr>
         <td><%= alert.product.staples_pid %></td>
-        <td><%= image_tag(alert.product.image_url, alt: alert.product.name) %></td>
+        <td><%= link_to image_tag(alert.product.image_url, alt: alert.product.name), "http:#{alert.product.url}", target: "_blank" %></td>
         <td><%= alert.product.name %></td>
         <td><%= "$#{alert.desired}" %></td>
         <td><%= "$#{alert.product.price}" %></td>
