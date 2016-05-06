@@ -19,11 +19,10 @@ namespace :update_price do
               logger.info "Alerting #{alert.user.email} with #{alert.product.name}"
               AlertMailer.price_drop_alert(alert).deliver_now
             end
-          else
-            product.touch
           end
+          product.touch
           product.save!
-          logger.error "product.updated_at: #{product.updated_at}"
+          logger.info "product.updated_at: #{product.updated_at}"
         rescue Exception => e
           ActiveRecord::Rollback
           logger.error  e
