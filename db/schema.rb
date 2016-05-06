@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160505204844) do
   add_index "price_histories", ["product_id"], name: "index_price_histories_on_product_id"
 
   create_table "products", force: :cascade do |t|
-    t.string   "staples_pid",  limit: 6,                            null: false
+    t.string   "staples_pid",  limit: 8,                            null: false
     t.string   "name",         limit: 256
     t.decimal  "price",                    precision: 10, scale: 2
     t.datetime "created_at",                                        null: false
