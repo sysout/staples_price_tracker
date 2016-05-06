@@ -2,13 +2,14 @@ require 'net/http'
 
 namespace :update_price do
   desc "Update staples products price"
-  task :start => :environment do
+  task :start, [:arg1] => :environment do |t, args|
     logger           = Logger.new(STDOUT)
     logger.level     = Logger::INFO
     Rails.logger     = logger
     logger.info "Making the attempt to update the price"
     # find the oldest 10 products with alerts
-    Product.joins(:alerts).where('products.updated_at < :date', date: 4.hours.ago).each do |product|
+    Product.joins(:alerts).where('products.updated_at < :date', date: args[:arg1].to_i.minutes.ago).each do |product|
+      logger.info "Only update product updated more than #{args[:arg1]} minutes ago"
       ActiveRecord::Base.transaction do
         begin
           current_price = product.current_price
