@@ -6,7 +6,7 @@ namespace :update_price do
     logger           = Logger.new(STDOUT)
     logger.level     = Logger::INFO
     Rails.logger     = logger
-    puts "Making the attempt to update the price"
+    logger.info "Making the attempt to update the price"
     # find the oldest 10 products with alerts
     Product.joins(:alerts).where('products.updated_at < :date', date: 1.minutes.ago).each do |product|
       ActiveRecord::Base.transaction do
@@ -23,9 +23,10 @@ namespace :update_price do
             product.touch
           end
           product.save!
+          logger.error "product.updated_at: #{product.updated_at}"
         rescue Exception => e
           ActiveRecord::Rollback
-          puts e
+          logger.error  e
         end
       end
     end
