@@ -8,7 +8,7 @@ namespace :update_price do
     Rails.logger     = logger
     logger.info "Making the attempt to update the price"
     # find the oldest 10 products with alerts
-    Product.joins(:alerts).where('products.updated_at < :date', date: 1.minutes.ago).each do |product|
+    Product.joins(:alerts).where('products.updated_at < :date', date: 4.hours.ago).each do |product|
       ActiveRecord::Base.transaction do
         begin
           current_price = product.current_price
