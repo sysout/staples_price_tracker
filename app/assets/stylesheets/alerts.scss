@@ -8,3 +8,14 @@
 .edit_alert .field{
   display: inline-block;
 }
+
+.alerts table { 
+    padding: 5px;
+    color: black;
+    text-align: left;
+    width: 100%;
+    hight: 100px;
+    
+}
+.alerts tr:nth-child(even) {background-color: #f2f2f2}
+
