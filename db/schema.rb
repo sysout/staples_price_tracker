@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505204844) do
+ActiveRecord::Schema.define(version: 20160507033820) do
 
   create_table "alerts", force: :cascade do |t|
     t.integer  "user_id",                             null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160505204844) do
   add_index "price_histories", ["product_id"], name: "index_price_histories_on_product_id"
 
   create_table "products", force: :cascade do |t|
-    t.string   "staples_pid",  limit: 8,                            null: false
+    t.string   "staples_pid",  limit: 13,                           null: false
     t.string   "name",         limit: 256
     t.decimal  "price",                    precision: 10, scale: 2
     t.datetime "created_at",                                        null: false
