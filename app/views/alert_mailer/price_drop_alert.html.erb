@@ -2,6 +2,6 @@
 
 <p>Hi <%= @user.name %>,</p>
 
-<p>This is your staples product alert:</p>
+<p><%= "The price of #{@product.name} is below your desired price $#{@alert.desired}" %></p>
 
-<%= image_tag(attachments['image.jpg'].url) %>
+<%= link_to image_tag(attachments['product_image.jpg'].url), "http:#{alert.product.url}", target: "_blank" %>
