@@ -11,6 +11,12 @@ class Product < ActiveRecord::Base
     !title or title.match("Unavailable")
   end
 
+  def load_image
+    return @image if @image
+    load_product
+    puts "http:#{self.image_url}"
+    @image=open("http:#{self.image_url}","rb").read
+  end
 
   def load_page(reload=false)
     return @page if @page and reload==false

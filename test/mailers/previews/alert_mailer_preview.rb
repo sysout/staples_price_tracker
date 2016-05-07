@@ -2,6 +2,6 @@
 class AlertMailerPreview < ActionMailer::Preview
   def price_drop_alert
     alert = Alert.first
-    AlertMailer.price_drop_alert(alert)
+    AlertMailer.price_drop_alert(alert, alert.product)
   end
 end

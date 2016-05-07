@@ -16,7 +16,7 @@ namespace :update_price do
           Alert.eager_load(:user, :product).where('alerts.desired >= :current_price and alerts.product_id=:product_id',
                       current_price: current_price, product_id:product.id).each do |alert|
             logger.info "Alerting #{alert.user.email} with #{alert.product.name}"
-            AlertMailer.price_drop_alert(alert).deliver_now
+            AlertMailer.price_drop_alert(alert, product).deliver_now
           end
           product.price=current_price
           product.touch

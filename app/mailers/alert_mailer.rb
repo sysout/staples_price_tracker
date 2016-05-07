@@ -1,8 +1,8 @@
 class AlertMailer < ApplicationMailer
-  def price_drop_alert(alert)
+  def price_drop_alert(alert, product)
     @user = alert.user
     @alert = alert
-    @product = alert.product
+    @product = product
     mail to: @user.email, subject: "#{@product.name} price drops to $#{@product.price}"
   end
 end
