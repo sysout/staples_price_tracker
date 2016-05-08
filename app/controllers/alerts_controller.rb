@@ -5,6 +5,7 @@ class AlertsController < ApplicationController
   # GET /alerts
   # GET /alerts.json
   def index
+    @title = "Price alerts"
     @alert = current_user.alerts.build
     @alert.build_product
     @alerts = current_user.alerts.all
