@@ -12,4 +12,14 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+
+  before_filter :redirect_to_prefered_host
+
+  private
+  def redirect_to_prefered_host
+    if Rails.env.production? && request.host != ENV['APP_HOST_NAME']
+      redirect_to(:host => ENV['APP_HOST_NAME'])
+    end
+  end
+
 end
