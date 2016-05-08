@@ -36,8 +36,8 @@ class Product < ActiveRecord::Base
     get_price load_page
   end
 
-  def load_product
-    return if self.id!=nil # product exist
+  def load_product(reload=false)
+    return if self.id!=nil and reload==false# product exist
     page=load_page
     self.name=page.title
     return if unavailable?(self.name)

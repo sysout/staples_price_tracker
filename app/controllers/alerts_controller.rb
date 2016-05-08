@@ -8,7 +8,7 @@ class AlertsController < ApplicationController
     @title = "Price alerts"
     @alert = current_user.alerts.build
     @alert.build_product
-    @alerts = current_user.alerts.all
+    @alerts = current_user.alerts.all.order(updated_at: :desc)
   end
 
   # GET /alerts/1
