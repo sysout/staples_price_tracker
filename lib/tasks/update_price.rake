@@ -13,12 +13,12 @@ namespace :update_price do
       ActiveRecord::Base.transaction do
         begin
           current_price = product.current_price
+          product.price=current_price
           Alert.eager_load(:user, :product).where('alerts.desired >= :current_price and alerts.product_id=:product_id',
                       current_price: current_price, product_id:product.id).each do |alert|
             logger.info "Alerting #{alert.user.email} with #{alert.product.name}"
             AlertMailer.price_drop_alert(alert, product).deliver_now
           end
-          product.price=current_price
           product.touch
           product.save!
           logger.info "product.updated_at: #{product.updated_at}"
