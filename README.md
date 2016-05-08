@@ -1,3 +1,5 @@
 # Staples price tracker
 
-https://fathomless-journey-48002.herokuapp.com/alerts
+This app is alive at: https://www.staplestracker.com
+
+If you want more feature, please create an issue in github
