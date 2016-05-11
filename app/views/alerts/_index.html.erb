@@ -15,7 +15,7 @@
       <tr>
         <td><%= alert.product.staples_pid %></td>
         <td><%= link_to image_tag(alert.product.image_url, alt: alert.product.name), "http:#{alert.product.url}", target: "_blank" %></td>
-        <td><%= alert.product.name %></td>
+        <td><%= alert.product.name.html_safe %></td>
         <td><%= "$#{alert.desired}" %></td>
         <td><%= "$#{alert.product.price}" %></td>
         <td><%= link_to 'Destroy', alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
