@@ -1,12 +1,28 @@
-<div class="center jumbotron">
+<div class="center">
 <h1>Welcome to the Staples Price Tracker</h1>
-
-<h2>
-  This is the home page for the Staples Price Tracker app.
-</h2>
-
-<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
+<div  class="center jumbotron other-color">
+<table>
+  <thead>
+  <tr>
+    <th>Product Id</th>
+    <th>Product Image</th>
+    <th>Product Name</th>
+    <th>Current Price</th>
+    <th>Subscribers</th>
+  </tr>
+  </thead>
 
-<%= link_to image_tag("rails.png", alt: "Rails logo"),
-          'http://rubyonrails.org' %>
+  <tbody>
+  <% @products.each do |product| %>
+      <tr>
+        <td><%= product.staples_pid %></td>
+        <td><%= link_to image_tag(product.image_url, alt: product.name), "http:#{product.url}", target: "_blank" %></td>
+        <td><%= product.name %></td>
+        <td><%= "$#{product.price}" %></td>
+        <td><%= "#{product.alerts_count}" %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
