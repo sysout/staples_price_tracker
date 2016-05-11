@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
       redirect_to alerts_path
     end
+    # @products =
   end
 
   def help

@@ -2,7 +2,7 @@ class Alert < ActiveRecord::Base
   before_validation :save_product
 
   belongs_to :user
-  belongs_to :product
+  belongs_to :product, :counter_cache => true
   accepts_nested_attributes_for :product
   validate :product_id_exists
   validates :desired, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/ },
