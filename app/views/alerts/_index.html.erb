@@ -6,7 +6,8 @@
       <th>Product Name</th>
       <th>Desired Price</th>
       <th>Current Price</th>
-      <th colspan="1">Action</th>
+      <th>Last updated</th>
+      <th>Action</th>
     </tr>
   </thead>
 
@@ -18,6 +19,7 @@
         <td><%= alert.product.name.html_safe %></td>
         <td><%= "$#{alert.desired}" %></td>
         <td><%= "$#{alert.product.price}" %></td>
+        <td><%= "#{alert.product.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%B %d, %Y %H:%M %Z") }" %></td>
         <td><%= link_to 'Destroy', alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
