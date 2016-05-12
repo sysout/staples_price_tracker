@@ -6,6 +6,9 @@ class Product < ActiveRecord::Base
   enum availability: [:instock, :oos]
 
   has_many :alerts
+  has_many :price_histories, -> { order(created_at: :desc) }
+
+  after_commit :record_price_changes
 
   def unavailable?(title)
     !title or title.match("Unavailable")
@@ -22,7 +25,7 @@ class Product < ActiveRecord::Base
     return @page if @page and reload==false
     agent = Mechanize.new
     agent.user_agent_alias = 'Mac Safari'
-    agent.history_added = Proc.new { sleep 0.5 }
+    agent.history_added = Proc.new { sleep 1 }
     page=agent.get("http://www.staples.com/product_#{self.staples_pid}")
     return page if unavailable?(page.title)
     @page=page
@@ -65,5 +68,14 @@ class Product < ActiveRecord::Base
     end
   end
 
-  private :unavailable?
+  private
+  :unavailable?
+
+  def record_price_changes
+    p_change=previous_changes['price']
+    if p_change and p_change[0]!=p_change[1]
+      self.price_histories.create(price: self.price)
+    end
+  end
+
 end

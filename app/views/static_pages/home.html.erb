@@ -7,6 +7,7 @@
     <th>Product Name</th>
     <th>Current Price</th>
     <th>Subscribers</th>
+    <th>Last updated</th>
   </tr>
   </thead>
 
@@ -18,6 +19,7 @@
         <td><%= product.name.html_safe %></td>
         <td><%= "$#{product.price}" %></td>
         <td><%= "#{product.alerts_count}" %></td>
+        <td><%= "#{product.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%B %d, %Y %H:%M %Z") }" %></td>
       </tr>
   <% end %>
   </tbody>
