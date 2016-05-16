@@ -13,13 +13,14 @@
 
   <tbody>
     <% @alerts.each do |alert| %>
+      <% product=alert.product %>
       <tr>
-        <td><%= alert.product.staples_pid %></td>
-        <td><%= link_to image_tag(alert.product.image_url, alt: alert.product.name), "http:#{alert.product.url}", target: "_blank" %></td>
-        <td><%= alert.product.name.html_safe %></td>
+        <td><%= product.staples_pid %></td>
+        <td><%= link_to image_tag(product.image_url, alt: product.name), product_path(product.staples_pid, product.name.parameterize) %></td>
+        <td><%= product.name.html_safe %></td>
         <td><%= "$#{alert.desired}" %></td>
-        <td><%= "$#{alert.product.price}" %></td>
-        <td><%= "#{alert.product.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%B %d, %Y %H:%M %Z") }" %></td>
+        <td><%= "$#{product.price}" %></td>
+        <td><%= "#{product.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%B %d, %Y %H:%M %Z") }" %></td>
         <td><%= link_to 'Destroy', alert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

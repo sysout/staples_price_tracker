@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :price_histories
+  get 'p/:staples_pid(-:product_name)' => 'products#show', :as => :product, constraints: {
+                                             staples_pid: /[A-Z0-9]{6,13}/
+                                         }
+
   resources :alerts
   root                'static_pages#home'
   get    'help'    => 'static_pages#help'

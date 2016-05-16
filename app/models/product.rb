@@ -10,6 +10,10 @@ class Product < ActiveRecord::Base
 
   after_commit :record_price_changes
 
+  def to_param
+    [self.staples_pid, self.name.parameterize].join("-")
+  end
+
   def unavailable?(title)
     !title or title.match("Unavailable")
   end
