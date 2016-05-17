@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
-  validates :staples_pid, presence: true, length: {maximum: 13, minimum: 6},
-            format: {with: /\A[A-Z0-9]{6,13}\z/}, uniqueness: true
+  validates :staples_pid, presence: true, length: {maximum: 13, minimum: 5},
+            format: {with: /\A[A-Z0-9]{5,13}\z/}, uniqueness: true
   before_validation :load_product
   validate :product_exists
   enum availability: [:instock, :oos]
