@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'p/:staples_pid(-:product_name)' => 'products#show', :as => :product, constraints: {
-                                             staples_pid: /[A-Z0-9]{6,13}/
+                                             staples_pid: /[A-Z0-9]{5,13}/
                                          }
 
   resources :alerts
