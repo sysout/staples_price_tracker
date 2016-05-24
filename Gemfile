@@ -17,7 +17,7 @@ gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'
 gem 'sdoc',                    '0.4.0', group: :doc
 gem 'mechanize'
-
+gem 'meta-tags'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

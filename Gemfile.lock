@@ -229,6 +229,8 @@ GEM
       nokogiri (~> 1.6)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
+    meta-tags (2.1.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (2.99)
     mini_backtrace (0.1.3)
@@ -371,6 +373,7 @@ DEPENDENCIES
   jbuilder (= 2.2.3)
   jquery-rails (= 4.0.3)
   mechanize
+  meta-tags
   mini_backtrace (= 0.1.3)
   mini_magick (= 3.8.0)
   minitest-reporters (= 1.0.5)

@@ -15,6 +15,9 @@ namespace :update_price do
       ActiveRecord::Base.transaction do
         begin
           product.price=product.current_price
+          if product.price<=0
+            next
+          end
           Alert.eager_load(:user, :product).where(
               'alerts.desired >= :current_price and alerts.product_id=:product_id',
                       current_price: product.price, product_id:product.id).each do |alert|
