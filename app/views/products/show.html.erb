@@ -1,4 +1,4 @@
-<h1><%= @product.name.html_safe %> price history</h1>
+<h1><td><%= link_to "#{@product.name} price history", "http:#{@product.url}", target: "_blank" %></h1>
 
 <table>
   <thead>
