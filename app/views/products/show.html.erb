@@ -1,3 +1,19 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
-<%= @product.name.html_safe %>
+<h1><%= @product.name.html_safe %> price history</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Price</th>
+    <th>Update time</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @product.price_histories.each do |price_history| %>
+      <tr>
+        <td><%= "$#{price_history.price}" %></td>
+        <td><%= "#{price_history.updated_at.in_time_zone("Pacific Time (US & Canada)").strftime("%B %d, %Y %H:%M %Z") }" %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
