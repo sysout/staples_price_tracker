@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   enum availability: [:instock, :oos]
 
   has_many :alerts
-  has_many :price_histories, -> { order(created_at: :desc) }
+  has_many :price_histories, -> { order(updated_at: :desc) }
 
   after_commit :record_price_changes
 
