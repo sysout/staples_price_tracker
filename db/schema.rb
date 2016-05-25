@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511213437) do
+ActiveRecord::Schema.define(version: 20160525051015) do
 
   create_table "alerts", force: :cascade do |t|
     t.integer  "user_id",                             null: false
@@ -47,16 +47,17 @@ ActiveRecord::Schema.define(version: 20160511213437) do
   add_index "price_histories", ["product_id"], name: "index_price_histories_on_product_id"
 
   create_table "products", force: :cascade do |t|
-    t.string   "staples_pid",  limit: 13,                                       null: false
-    t.string   "name",         limit: 256
-    t.decimal  "price",                    precision: 10, scale: 2
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
-    t.string   "url",          limit: 256
-    t.string   "image_url",    limit: 256
-    t.string   "description",  limit: 256
+    t.string   "staples_pid",           limit: 13,                                       null: false
+    t.string   "name",                  limit: 256
+    t.decimal  "price",                             precision: 10, scale: 2
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
+    t.string   "url",                   limit: 256
+    t.string   "image_url",             limit: 256
+    t.string   "description",           limit: 256
     t.integer  "availability"
-    t.integer  "alerts_count",                                      default: 0
+    t.integer  "alerts_count",                                               default: 0
+    t.integer  "price_histories_count"
   end
 
   add_index "products", ["staples_pid"], name: "index_products_on_staples_pid"
