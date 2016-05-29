@@ -5,8 +5,8 @@ class Product < ActiveRecord::Base
   validate :product_exists
   enum availability: [:instock, :oos]
 
-  has_many :alerts
-  has_many :price_histories, -> { order(updated_at: :desc) }
+  has_many :alerts, dependent: :destroy
+  has_many :price_histories, -> { order(updated_at: :desc) }, dependent: :destroy
 
   after_commit :record_price_changes
 
